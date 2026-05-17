@@ -1,0 +1,93 @@
+{
+  "Index": {
+    "title": "Joud Kayyali | Software Engineer"
+  },
+  "Navigation": {
+    "experience": "Experience",
+    "projects": "Projects",
+    "archive": "Archive",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "greeting": "Hi, I'm",
+    "roles": "Software Engineer | Full-Stack Developer | System Architect",
+    "description": "I'm currently a Frontend Developer Intern, transitioning into Full-Stack Architecture. I build modern, scalable web applications with a strong focus on algorithmic optimization and beautiful UI/UX.",
+    "viewWork": "View My Work",
+    "downloadResume": "Download Resume",
+    "contactMe": "Contact Me",
+    "currentlyWorking": "Currently working on my Portfolio"
+  },
+  "Experience": {
+    "title": "Experience",
+    "venturex": {
+      "role": "Frontend Developer Intern",
+      "company": "The VentureX",
+      "date": "Oct 2024 - Present",
+      "description": "Transitioned to developing dynamic scalable interfaces using React, Next.js, and TypeScript. Built a custom Browser Extension Manager UI from scratch using Vanilla JS (demonstrating pure DOM manipulation mastery). Integrated RESTful APIs, Node.js, and PostgreSQL."
+    },
+    "shalati": {
+      "role": "Graphic Designer & IT Support",
+      "company": "Shalati Print",
+      "date": "Aug 2024 - Oct 2024",
+      "description": "Managed technical troubleshooting for production hardware/software and designed digital/print assets."
+    }
+  },
+  "Projects": {
+    "title": "Engineering Showcase",
+    "viewCode": "View Code",
+    "viewArchitecture": "Architecture",
+    "items": {
+      "startup": {
+        "title": "Startup Investment Platform",
+        "description": "A Phase 4 migration from a React/Vite CSR prototype to a production-ready Next.js Full-Stack Backend-For-Frontend (BFF) architecture. Implements strict Role-Based Access Control (RBAC) and a secure Data Access Layer (DAL) using Supabase and Prisma ORM."
+      },
+      "algorithm": {
+        "title": "Route Optimization & Algorithm Analyzer",
+        "description": "Web-based visualization platform for Dijkstra and Bellman-Ford algorithms. Optimized with a custom Priority Queue (Min-Heap) for large-scale graphs and stress-tested against complex negative weight cycles."
+      },
+      "os": {
+        "title": "OS CPU Scheduling Simulator",
+        "description": "A team-engineered simulation engine animating FCFS, SJF, Round Robin, and Priority algorithms with real-time Gantt charts. Managed full software engineering lifecycle and documentation."
+      },
+      "library": {
+        "title": "Library Management System",
+        "description": "A robust Java OOP desktop application with a Swing GUI, integrated seamlessly with a relational SQL database via JDBC for full CRUD and authentication operations."
+      },
+      "weather": {
+        "title": "Weather Application",
+        "description": "Dynamic React.js app fetching real-time geolocation/climate data via RESTful APIs, thoroughly tested via Postman, featuring full Arabic/English i18n support."
+      },
+      "browser": {
+        "title": "Browser Extension Manager UI",
+        "description": "Built completely from scratch using Vanilla JS and CSS, demonstrating pure DOM manipulation and persistent custom state management for dark/light themes."
+      }
+    }
+  },
+  "Archive": {
+    "title": "Other Projects Archive",
+    "table": {
+      "year": "Year",
+      "project": "Project",
+      "tech": "Built with",
+      "link": "Link"
+    },
+    "items": {
+      "campus": { "title": "CampusConnect", "tech": "PHP, MySQL, JS", "year": "2024" },
+      "todo": { "title": "Todo-List-React", "tech": "React.js, Context API", "year": "2023" },
+      "portfolio": { "title": "Portfolio (HTML/CSS)", "tech": "HTML5, CSS3", "year": "2023" },
+      "youtube": { "title": "YouTube Clone", "tech": "HTML5, CSS3, Flexbox", "year": "2022" },
+      "opensource": { "title": "Open Source Contribution", "tech": "Git, Open Source", "year": "2022" }
+    }
+  },
+  "Contact": {
+    "title": "Get In Touch",
+    "description": "I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    },
+    "socials": "Follow me on"
+  }
+}
