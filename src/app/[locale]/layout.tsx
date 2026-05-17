@@ -7,6 +7,7 @@ import "../globals.css";
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
+import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-main' });
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-main' });
@@ -36,14 +37,16 @@ export default async function LocaleLayout({
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const fontClass = locale === 'ar' ? cairo.variable : inter.variable;
 
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get('theme');
+  const theme = themeCookie ? themeCookie.value : 'dark';
+
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html lang={locale} dir={dir} className={theme} suppressHydrationWarning>
       <body className={`${fontClass} font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200`} suppressHydrationWarning>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
+          defaultTheme={theme as any}
+          storageKey="theme"
         >
           <NextIntlClientProvider messages={messages}>
             <div className="flex min-h-screen flex-col bg-background text-foreground">
