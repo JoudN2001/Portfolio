@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl"
 import { motion } from "framer-motion"
 import { projects } from "@/constants/data"
-import { ExternalLink, GitMerge, FileCode, Layers, Cpu, Code2, AppWindow, ListTodo, MonitorPlay } from "lucide-react"
+import { ExternalLink, MonitorPlay, Layers } from "lucide-react"
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -12,96 +12,141 @@ const GithubIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const getIcon = (id: string) => {
-  switch (id) {
-    case "startup-platform": return <Layers className="w-6 h-6 text-primary" />
-    case "algorithm-project": return <GitMerge className="w-6 h-6 text-accent" />
-    case "os-scheduler": return <Cpu className="w-6 h-6 text-primary" />
-    case "library-system": return <FileCode className="w-6 h-6 text-accent" />
-    case "weather-app": return <AppWindow className="w-6 h-6 text-primary" />
-    case "extension-manager": return <Code2 className="w-6 h-6 text-accent" />
-    case "task-manager": return <ListTodo className="w-6 h-6 text-primary" />
-    default: return <Code2 className="w-6 h-6 text-primary" />
+function ProjectImageOrMockup({ src, title }: { src?: string; title: string }) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={title}
+        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+      />
+    )
   }
+  return (
+    <>
+      <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
+      <div className="w-32 h-32 rounded-full bg-primary/20 blur-3xl absolute top-1/4 left-1/4 group-hover:scale-110 transition-transform duration-700" />
+      <div className="w-40 h-40 rounded-full bg-accent/20 blur-3xl absolute bottom-1/4 right-1/4 group-hover:scale-110 transition-transform duration-700" />
+      <div className="relative z-0 flex flex-col items-center gap-3">
+        <Layers className="w-14 h-14 text-slate-300 dark:text-muted-foreground/30 group-hover:scale-110 transition-transform duration-500" />
+        <span className="text-xs font-mono text-slate-400 dark:text-muted-foreground/40 tracking-wider uppercase">
+          Preview Not Available
+        </span>
+      </div>
+    </>
+  )
 }
 
 export function Projects() {
   const locale = useLocale()
   const isAr = locale === 'ar'
-  
+
+  const flagshipProjects = projects.filter(p => p.isFlagship)
+
   return (
-    <section className="py-24 bg-muted/30 border-y border-border/40">
+    <section className="py-24 md:py-32 bg-slate-50 dark:bg-muted/10 border-y border-slate-200 dark:border-border/40">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-4">
-            <span className="text-primary font-mono text-2xl">#</span>
-            {isAr ? "معرض المشاريع الهندسية" : "Engineering Showcase"}
-            <div className="flex-1 h-px bg-border ms-4"></div>
-          </h2>
+          <div className="mb-20 max-w-2xl">
+            <p className="text-primary font-mono text-sm mb-3 tracking-wider uppercase">
+              {isAr ? "أبرز الأعمال" : "Featured Work"}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-foreground tracking-tight">
+              {isAr ? "معرض المشاريع الهندسية" : "Engineering Showcase"}
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
+              {isAr
+                ? "مجموعة من أبرز المشاريع التي قمت بتطويرها. تركز على حلول معمارية قوية وتجربة مستخدم سلسة."
+                : "A selection of flagship projects focused on robust architecture, clean code, and seamless user experiences."}
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => {
-              const colSpan = (project.id === "startup-platform" || project.id === "extension-manager") ? "md:col-span-2 lg:col-span-2" : "md:col-span-1 lg:col-span-1"
-              
+          <div className="flex flex-col gap-24 md:gap-32">
+            {flagshipProjects.map((project, index) => {
+              const isEven = index % 2 === 0
+
               return (
                 <motion.div
                   key={project.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group relative flex flex-col justify-between p-8 rounded-3xl border border-border bg-background hover:bg-muted/10 transition-colors shadow-sm hover:shadow-xl ${colSpan}`}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-16 items-center group`}
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="p-4 rounded-xl bg-primary/10 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-shadow">
-                        {getIcon(project.id)}
-                      </div>
-                      <div className="flex gap-2 z-10">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noreferrer" title="GitHub Repo" className="p-2 rounded-full bg-muted/50 hover:bg-primary/20 hover:text-primary transition-all text-muted-foreground">
-                            <GithubIcon className="w-5 h-5" />
-                          </a>
-                        )}
-                        {project.demo && (
-                          <a href={project.demo} target="_blank" rel="noreferrer" title="Live Demo" className="p-2 rounded-full bg-muted/50 hover:bg-accent/20 hover:text-accent transition-all text-muted-foreground">
-                            <MonitorPlay className="w-5 h-5" />
-                          </a>
-                        )}
-                      </div>
+                  {/* Image / Mockup */}
+                  <div className="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden relative border border-slate-200 dark:border-border/50 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-muted/30 dark:to-muted/10 shadow-lg group-hover:shadow-xl transition-shadow flex items-center justify-center">
+                    <ProjectImageOrMockup src={project.image} title={isAr ? project.titleAr : project.title} />
+                  </div>
+
+                  {/* Content */}
+                  <div className={`w-full md:w-1/2 flex flex-col ${isEven ? 'md:items-start' : 'md:items-end md:text-end'}`}>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-sm mb-6 w-fit">
+                      <span className="text-primary/60 font-normal">{project.year}</span>
+                      <span>·</span>
+                      <span>{isAr ? "مشروع مميز" : "Featured Project"}</span>
                     </div>
-                    
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors leading-tight">
+
+                    <h3 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-foreground tracking-tight group-hover:text-primary transition-colors">
                       {isAr ? project.titleAr : project.title}
                     </h3>
-                    
-                    <div className="flex flex-wrap gap-2 mb-6">
+
+                    <div className="bg-white dark:bg-background border border-slate-200 dark:border-border/50 shadow-sm p-6 rounded-2xl mb-8 relative z-20 md:-mx-6 lg:-mx-10">
+                      <p className="text-slate-600 dark:text-muted-foreground text-base md:text-lg leading-relaxed">
+                        {isAr ? project.descriptionAr : project.description}
+                      </p>
+                    </div>
+
+                    <div className={`flex flex-wrap gap-2 mb-8 ${isEven ? 'justify-start' : 'md:justify-end justify-start'}`}>
                       {project.tech.map(t => (
-                        <span key={t} className="px-3 py-1 bg-muted/50 rounded-full text-xs font-mono text-foreground border border-border/50">
+                        <span key={t} className="px-3 py-1.5 bg-slate-100 dark:bg-muted/50 rounded-full text-sm font-mono text-slate-700 dark:text-foreground border border-slate-200 dark:border-border/50">
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <p className="text-muted-foreground text-base leading-relaxed mb-8">
-                      {isAr ? project.descriptionAr : project.description}
-                    </p>
-                  </div>
-                  
-                  {project.extraLinks && project.extraLinks.length > 0 && (
-                    <div className="flex flex-wrap gap-4 mt-auto pt-6 border-t border-border/50">
-                      {project.extraLinks.map((link, i) => (
-                        <a key={i} href={link.url} target="_blank" rel="noreferrer" className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-colors ${i % 2 === 0 ? 'bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground' : 'bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground'}`}>
-                          <ExternalLink className="w-4 h-4" /> {isAr ? link.labelAr : link.label}
+                    <div className={`flex flex-wrap items-center gap-3 ${isEven ? 'justify-start' : 'md:justify-end justify-start'}`}>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-slate-700 dark:text-foreground bg-slate-100 dark:bg-muted/50 hover:bg-slate-200 dark:hover:bg-muted transition-colors border border-slate-200 dark:border-border"
+                        >
+                          <GithubIcon className="w-5 h-5" />
+                          {isAr ? "المستودع" : "GitHub"}
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors shadow-md shadow-primary/20 hover:shadow-primary/40"
+                        >
+                          <MonitorPlay className="w-5 h-5" />
+                          {isAr ? "معاينة حية" : "Live Demo"}
+                        </a>
+                      )}
+                      {project.extraLinks?.map((link, i) => (
+                        <a
+                          key={i}
+                          href={link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-accent hover:text-accent/80 transition-colors border border-accent/30 hover:border-accent/60"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          {isAr ? link.labelAr : link.label}
                         </a>
                       ))}
                     </div>
-                  )}
+                  </div>
                 </motion.div>
               )
             })}

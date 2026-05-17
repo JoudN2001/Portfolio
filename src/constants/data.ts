@@ -7,6 +7,8 @@ export interface Project {
   tech: string[];
   github?: string;
   demo?: string;
+  image?: string;
+  year: string;
   isFlagship: boolean;
   extraLinks?: { label: string; labelAr: string; url: string }[];
   bullets?: string[];
@@ -26,11 +28,31 @@ export interface Experience {
   bulletsAr: string[];
 }
 
+// ─── HERO TYPEWRITER DATA ────────────────────────────────────────────────────
+export const heroData = {
+  roles: {
+    en: [
+      "Software Engineer",
+      "Full-Stack Architect",
+      "Next.js Developer",
+      "Algorithm Enthusiast",
+      "Computer Science Student"
+    ],
+    ar: [
+      "مهندس برمجيات",
+      "مطور Full-Stack",
+      "مطور Next.js",
+      "شغوف بالخوارزميات وهندسة النظم",
+      "طالب علوم حاسوب"
+    ]
+  }
+};
+
 export const personalInfo = {
   name: "Joud Kayyali",
   nameAr: "جود كيالي",
   title: "Software Engineer | Full-Stack Developer | System Architect",
-  titleAr: "مهندس برمجيات | مطور Full-Stack | مهندس نظم",
+  titleAr: "مهندس برمجيات | مطور متكامل (Full-Stack) | مهندس نظم",
   email: "joud.kayale@gmail.com",
   phone: "+962 7 8742 3661",
   linkedin: "https://linkedin.com/in/joudn2001",
@@ -46,144 +68,204 @@ export const experiences: Experience[] = [
     id: "venturex",
     company: "The VentureX",
     role: "Frontend Developer Intern",
-    roleAr: "متدرب مطور واجهات أمامية",
+    roleAr: "متدرب - مطور واجهات أمامية",
     location: "Amman, Jordan",
     locationAr: "عمان، الأردن",
-    period: "Oct 2025 – Present",
-    periodAr: "أكتوبر 2025 – الحاضر",
+    period: "Oct 2024 – Present",
+    periodAr: "أكتوبر 2024 – الحاضر",
     bullets: [
-      "Transitioned to developing dynamic and scalable web interfaces utilizing modern frameworks including React and Next.js.",
-      "Engineered type-safe components and scalable codebases using TypeScript, significantly improving code maintainability.",
-      "Integrated and managed data flows with backend systems using RESTful APIs, Node.js, and PostgreSQL to ensure seamless user experiences.",
-      "Collaborated directly with the development team to translate UI/UX wireframes into functional, cross-browser compatible applications."
+      "Architected and deployed dynamic, highly scalable web interfaces utilizing modern frameworks like React, Next.js, and TypeScript.",
+      "Engineered type-safe components and modular codebases, drastically reducing runtime errors and significantly improving code maintainability.",
+      "Integrated and managed complex data pipelines with backend systems utilizing RESTful APIs, Node.js, and PostgreSQL to ensure seamless, real-time user experiences.",
+      "Developed a custom Browser Extension UI from scratch using strictly Vanilla JavaScript, demonstrating deep mastery of DOM manipulation and dynamic state management without relying on external libraries."
     ],
     bulletsAr: [
-      "التحول إلى تطوير واجهات ويب ديناميكية وقابلة للتوسع باستخدام أطر العمل الحديثة مثل React و Next.js.",
-      "تصميم مكونات وقواعد بيانات قابلة للتوسع وآمنة باستخدام TypeScript، مما أدى إلى تحسين صيانة الكود بشكل كبير.",
-      "دمج وإدارة تدفق البيانات مع أنظمة الواجهة الخلفية باستخدام واجهات RESTful APIs، Node.js، و PostgreSQL لضمان تجربة مستخدم سلسة.",
-      "التعاون المباشر مع فريق التطوير لتحويل المخططات الهيكلية لتجربة/واجهة المستخدم إلى تطبيقات وظيفية متوافقة مع متصفحات متعددة."
+      "هندسة وبناء واجهات ويب تفاعلية وقابلة للتوسع باستخدام أحدث التقنيات مثل React و Next.js و TypeScript.",
+      "برمجة مكونات آمنة ونظيفة (Type-safe) ساهمت في تقليل الأخطاء البرمجية وتحسين قابلية صيانة النظام وتطويره.",
+      "ربط وإدارة تدفق البيانات المعقدة مع أنظمة الواجهة الخلفية (Backend) عبر واجهات RESTful APIs وقواعد بيانات PostgreSQL لضمان تجربة مستخدم سلسة وفورية.",
+      "تطوير واجهة مدير إضافات متصفح (Browser Extension) من الصفر باستخدام Vanilla JavaScript، مما يعكس تحكماً عميقاً في الـ DOM وإدارة الحالة محلياً دون الاعتماد على مكتبات خارجية."
     ]
   },
   {
     id: "shalati",
     company: "SHALATI PRINT",
-    role: "Graphic Designer & IT Support",
-    roleAr: "مصمم جرافيك ودعم فني",
+    role: "IT Support Specialist & Graphic Designer",
+    roleAr: "أخصائي دعم فني ومصمم جرافيك",
     location: "Amman, Jordan",
     locationAr: "عمان، الأردن",
-    period: "Aug 2024 – Oct 2025",
-    periodAr: "أغسطس 2024 – أكتوبر 2025",
+    period: "Aug 2024 – Oct 2024",
+    periodAr: "أغسطس 2024 – أكتوبر 2024",
     bullets: [
-      "Designed digital and print assets using Adobe Creative Suite and managed technical troubleshooting for production hardware/software to minimize downtime."
+      "Managed rapid technical troubleshooting for production hardware and software systems, successfully minimizing operational downtime.",
+      "Designed compelling digital and print assets using Adobe Creative Suite, blending visual aesthetics with functional requirements."
     ],
     bulletsAr: [
-      "تصميم الأصول الرقمية والمطبوعة باستخدام حزمة Adobe Creative Suite وإدارة حل المشكلات التقنية لأجهزة/برامج الإنتاج لتقليل وقت التوقف عن العمل."
+      "إدارة الحلول التقنية السريعة لأعطال أنظمة الإنتاج (أجهزة وبرمجيات)، مما ساهم في تقليل أوقات التوقف عن العمل وضمان استمرارية الإنتاج.",
+      "تصميم أصول رقمية ومطبوعة احترافية باستخدام حزمة Adobe Creative Suite، مع دمج اللمسة الجمالية بالمتطلبات الوظيفية."
     ]
   },
   {
     id: "youtube",
-    company: "YOUTUBE CHANNEL",
-    role: "Content Creator",
+    company: "TECH YOUTUBE CHANNEL",
+    role: "Content Creator & Hardware Enthusiast",
     roleAr: "صانع محتوى تقني",
     location: "Remote",
     locationAr: "عن بعد",
     period: "2020 – 2021",
     periodAr: "2020 – 2021",
     bullets: [
-      "Produced technology-focused content and building PC Hardware & Software, building a community and managing audience engagement."
+      "Produced engaging, technology-focused content specializing in PC hardware building, software optimization, and tech reviews.",
+      "Built and managed a highly interactive digital community, translating complex technical concepts into accessible content for a broad audience."
     ],
     bulletsAr: [
-      "إنتاج محتوى يركز على التكنولوجيا وتجميع الأجهزة/البرامج، مع بناء مجتمع وإدارة تفاعل الجمهور."
+      "إنتاج محتوى مرئي متخصص في تكنولوجيا الحاسوب، تجميع الأجهزة (PC Building)، وتحسين أداء البرمجيات.",
+      "بناء وإدارة مجتمع رقمي متفاعل، وتبسيط المفاهيم التقنية المعقدة لتكون في متناول الجمهور الواسع."
     ]
   }
 ];
 
 export const projects: Project[] = [
+  // ── FLAGSHIP ──────────────────────────────────────────────────────────────
   {
     id: "startup-platform",
-    title: "Startup Investment Platform (Full-Stack Migration)",
-    titleAr: "منصة استثمار الشركات الناشئة (Full-Stack Migration)",
-    description: "Architecting Phase 4 system migration from React/Vite CSR to Next.js BFF. Designing secure DAL using Prisma ORM and Supabase PostgreSQL. Enforcing strict RBAC across 3 roles (Admin, Startup, Investor). Migrating legacy JS to strict TS.",
-    descriptionAr: "هندسة وتنفيذ هجرة النظام للمرحلة الرابعة (Phase 4) من نموذج أولي يعتمد على React/Vite CSR إلى بنية متكاملة وجاهزة للإنتاج باستخدام Next.js Full-Stack (BFF). يتضمن بناء طبقة وصول بيانات آمنة (DAL) باستخدام Prisma ORM و Supabase PostgreSQL مع تطبيق نظام صارم للتحكم في الصلاحيات بناءً على الأدوار (RBAC).",
-    tech: ["Next.js", "TypeScript", "Supabase", "Prisma ORM"],
+    year: "2026",
+    title: "Startup Investment Platform (Full-Stack MVP)",
+    titleAr: "منصة استثمار الشركات الناشئة (منتج متكامل)",
+    description: "Successfully architected and deployed a production-ready Full-Stack Backend-For-Frontend (BFF) MVP. Built with Next.js and strict TypeScript. Engineered a highly secure Data Access Layer (DAL) utilizing Prisma ORM and Supabase PostgreSQL. Implemented complex state machines (XState) and enforced rigorous Role-Based Access Control (RBAC) alongside Row Level Security (RLS) to seamlessly manage end-to-end investment lifecycles across Admin, Startup, and Investor dashboards.",
+    descriptionAr: "هندسة وتطوير منتج أولي متكامل (MVP) جاهز للإنتاج بنظام Backend-For-Frontend (BFF). تم بناء المنصة باستخدام Next.js و TypeScript، مع تصميم طبقة وصول بيانات (DAL) فائقة الأمان باستخدام Prisma ORM و Supabase PostgreSQL. تم تطبيق تحكم صارم بالصلاحيات (RBAC) وأمان على مستوى السجلات (RLS) لإدارة دورة حياة الاستثمار بالكامل عبر لوحات تحكم مستقلة للإدارة، الشركات الناشئة، والمستثمرين.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Prisma ORM", "XState", "PostgreSQL"],
     github: "https://github.com/JoudN2001/Startup-Investment-Platform",
     demo: "https://startup-investment-platform.vercel.app/",
+    image: "/projectThumbnail/startup-platform.png",
     isFlagship: true,
     extraLinks: [
-      { label: "System Flow", labelAr: "مخطط تدفق النظام", url: "https://lucid.app/lucidchart/72062dc7-26e1-49d7-8713-306f64dbdccf/edit" },
+      { label: "System Architecture", labelAr: "مخطط هيكلية النظام", url: "https://lucid.app/lucidchart/72062dc7-26e1-49d7-8713-306f64dbdccf/edit" },
       { label: "Database Schema", labelAr: "مخطط قاعدة البيانات", url: "https://lucid.app/lucidchart/33eff361-3831-4b43-bf38-9b7e1ec494a3/edit" }
     ]
   },
   {
     id: "algorithm-project",
+    year: "2025",
     title: "Route Optimization & Algorithm Analyzer",
     titleAr: "محلل خوارزميات تحسين المسارات",
-    description: "Web platform to analyze Dijkstra and Bellman-Ford. Optimized with custom Priority Queue (Min-Heap). Stress-tested with complex edge cases and negative weight cycles.",
-    descriptionAr: "منصة ويب لمحاكاة خوارزميات Dijkstra و Bellman-Ford. تم تحسينها باستخدام طابور أولويات مخصص (Min-Heap) واختبارها ضد تحديات الأوزان السلبية.",
-    tech: ["JavaScript", "Data Structures", "Performance Testing"],
+    description: "Engineered a visualization platform to rigorously analyze, simulate, and compare shortest-path graph algorithms (Dijkstra, Bellman-Ford). Optimized execution times by implementing a custom Min-Heap Priority Queue, successfully stress-testing the engine against massive datasets and complex negative weight cycles.",
+    descriptionAr: "منصة ويب لتحليل ومحاكاة خوارزميات الرسوم البيانية (Dijkstra, Bellman-Ford). تم تحسين الأداء الزمني للخوارزميات عبر بناء هيكل بيانات طابور أولويات مخصص (Min-Heap)، مع إجراء اختبارات جهد قاسية لمعالجة مشكلة الدورات السلبية في البيانات الضخمة.",
+    tech: ["JavaScript", "Data Structures", "Min-Heap", "Performance Testing"],
     github: "https://github.com/JoudN2001/Algorithm_Project",
     demo: "https://algorithm-project-silk.vercel.app/",
-    isFlagship: true
-  },
-  {
-    id: "os-scheduler",
-    title: "OS CPU Scheduling Simulator (Team Project)",
-    titleAr: "محاكي جدولة المعالج لأنظمة التشغيل",
-    description: "Simulation engine animating FCFS, SJF, Round Robin, and Priority. Managed full lifecycle and architecture designs. Implemented synchronization and preemption logic with real-time Gantt charts.",
-    descriptionAr: "محرك محاكاة ويب متقدم لتجسيد خوارزميات جدولة وحدة المعالجة المركزية الأساسية (FCFS, SJF, Round Robin, Priority) مع تمثيل مرني فوري عبر مخططات Gantt وتطبيق منطق التزامن الدقيق.",
-    tech: ["JavaScript", "HTML5", "CSS3"],
-    github: "https://github.com/JoudN2001/OS-Scheduler-Simulation-Project",
-    demo: "https://joudn2001.github.io/OS-Scheduler-Simulation-Project",
+    image: "/projectThumbnail/algorithm-project.png",
     isFlagship: true
   },
   {
     id: "library-system",
-    title: "Library Management System",
-    titleAr: "نظام إدارة المكتبات",
-    description: "Desktop app utilizing Java OOP and Swing. Relational SQL database integrated via JDBC for CRUD and authentication.",
-    descriptionAr: "تطبيق مكتبي متكامل مبني على مبادئ البرمجة كائنية التوجه (OOP) بلغة Java مع واجهة رسومية باستخدام Swing، متصل بقاعدة بيانات علاقات SQL عن طريق بروتوكول JDBC لعمليات المعالجة المباشرة والتحقق.",
-    tech: ["Java", "SQL", "JDBC", "Swing"],
+    year: "2024",
+    title: "Enterprise Library Management System",
+    titleAr: "نظام الإدارة المؤسسية للمكتبات",
+    description: "Architected a robust desktop application utilizing strict Java Object-Oriented Programming (OOP) principles and Swing GUI components. Engineered a relational SQL database architecture, integrated seamlessly via JDBC, ensuring data integrity through comprehensive CRUD operations and secure authentication workflows.",
+    descriptionAr: "تصميم وبناء تطبيق مكتبي قوي يعتمد على مبادئ البرمجة كائنية التوجه (OOP) بلغة Java مع واجهة Swing. يتصل النظام بقاعدة بيانات SQL علائقية عبر JDBC لضمان تكامل البيانات، مع توفير نظام مصادقة آمن وعمليات إدارة (CRUD) شاملة.",
+    tech: ["Java", "SQL", "JDBC", "Swing", "OOP"],
     github: "https://github.com/JoudN2001/Library_Management_in_Java_GUI",
+    image: "",
     isFlagship: true
   },
   {
-    id: "weather-app",
-    title: "Weather Application (API Integration)",
-    titleAr: "تطبيق تتبع الطقس العالمي",
-    description: "Real-time weather data fetching geolocation/climate data. Implemented i18n for Arabic/English.",
-    descriptionAr: "تطبيق React.js يجلب بيانات المناخ والموقع الجغرافي الحية عبر واجهات برمجية RESTful خارجية.",
-    tech: ["React.js", "RESTful APIs", "Postman", "JavaScript"],
-    github: "https://github.com/JoudN2001/Weather-App",
-    demo: "https://open-weather-api-app-live.netlify.app/",
+    id: "os-scheduler",
+    year: "2025",
+    title: "OS CPU Scheduling Simulator",
+    titleAr: "محاكي أنظمة تشغيل وحدة المعالجة (OS Scheduler)",
+    description: "Collaborated within an agile team to engineer a comprehensive web-based simulation engine animating core OS CPU scheduling algorithms (FCFS, SJF, Round Robin, and Priority). Solved complex process preemption and synchronization logic, computing real-time performance metrics visualized via dynamic Gantt charts.",
+    descriptionAr: "تطوير محرك محاكاة متقدم يجسد خوارزميات جدولة المعالج في أنظمة التشغيل (FCFS, SJF, Round Robin, Priority). تم حل مشكلات التزامن المعقدة وحساب مقاييس الأداء في الوقت الفعلي مع عرض مرئي ديناميكي لمخططات Gantt.",
+    tech: ["JavaScript", "HTML5", "CSS3", "System Architecture"],
+    github: "https://github.com/JoudN2001/OS-Scheduler-Simulation-Project",
+    demo: "https://joudn2001.github.io/OS-Scheduler-Simulation-Project",
+    image: "/projectThumbnail/os-scheduler.png",
     isFlagship: true
   },
   {
     id: "extension-manager",
-    title: "Browser Extension Manager UI",
-    titleAr: "واجهة مدير إضافات المتصفح",
-    description: "Built from scratch with Vanilla JS (DOM manipulation). Custom Dark/Light mode theme toggle using CSS variables.",
-    descriptionAr: "بُنيت بالكامل من الصفر باستخدام Vanilla JS لمعالجة DOM دون مكتبات خارجية. تتضمن إدارة حالة مخصصة للسمات الفاتحة والداكنة.",
-    tech: ["JavaScript", "HTML5", "CSS3"],
+    year: "2025",
+    title: "Vanilla JS Browser Extension Manager UI",
+    titleAr: "واجهة مدير الإضافات (Vanilla JS)",
+    description: "Built entirely from scratch utilizing strict Vanilla JavaScript, showcasing advanced DOM manipulation. Engineered a persistent custom Dark/Light mode theme toggle through state management and CSS custom properties.",
+    descriptionAr: "واجهة بُنيت بالكامل من الصفر دون مكاتب خارجية لإثبات قوة التحكم بالـ DOM باستخدام Vanilla JS. تتضمن نظاماً مبتكراً للتبديل بين الوضع الليلي والنهاري بالاعتماد على إدارة الحالة ومتغيرات CSS.",
+    tech: ["Vanilla JS", "DOM Manipulation", "CSS3"],
     github: "https://github.com/JoudN2001/Browser-extension-manager-UI",
     demo: "https://joudn2001.github.io/Browser-extension-manager-UI/",
+    image: "/projectThumbnail/extension-manager.png",
     isFlagship: true
+  },
+  // ── ARCHIVE ───────────────────────────────────────────────────────────────
+  {
+    id: "weather-app",
+    year: "2026",
+    title: "Global Weather Tracking Application",
+    titleAr: "تطبيق تتبع المناخ العالمي",
+    description: "Developed a dynamic tracking application utilizing React.js. Seamlessly integrated third-party RESTful APIs for precise geolocation data. Conducted rigorous endpoint testing via Postman and implemented scalable i18n support for seamless bilingual (Arabic/English) experiences.",
+    descriptionAr: "تطبيق React.js ديناميكي يجلب بيانات المناخ الحية عبر ربط واجهات برمجية خارجية (RESTful APIs). تم اختبار نقاط الاتصال بدقة باستخدام Postman، مع دعم كامل لتعدد اللغات (العربية/الإنجليزية) لضمان تجربة مستخدم مثالية.",
+    tech: ["React.js", "RESTful APIs", "Postman", "i18n"],
+    github: "https://github.com/JoudN2001/Weather-App",
+    demo: "https://open-weather-api-app-live.netlify.app/",
+    image: "/projectThumbnail/weather-app.png",
+    isFlagship: false
   },
   {
     id: "task-manager",
-    title: "Task Management Application (React.js)",
-    titleAr: "تطبيق إدارة المهام التفاعلي",
-    description: "SPA with full CRUD. Used Context API for scalable global state management (filtering, modals) without prop drilling.",
-    descriptionAr: "تطبيق صفحة واحدة (SPA) مع عمليات CRUD كاملة. تم استخدام Context API لإدارة الحالة العالمية (كالتصفية والنوافذ المنبثقة) لتجنب تمرير الخصائص (Prop drilling).",
-    tech: ["React.js", "Context API", "JavaScript", "CSS"],
+    year: "2026",
+    title: "Scalable Task Management SPA",
+    titleAr: "تطبيق إدارة المهام (SPA)",
+    description: "Engineered a dynamic Single Page Application (SPA) utilizing React.js. Leveraged the React Context API for highly scalable global state management, efficiently handling data filtering and interactive UI modals without prop drilling.",
+    descriptionAr: "تطبيق صفحة واحدة (SPA) تفاعلي يدعم عمليات (CRUD) كاملة. تم استخدام React Context API لإدارة الحالة العالمية بكفاءة عالية، وتصفية البيانات بمرونة دون تعقيد نقل الخصائص (Prop Drilling).",
+    tech: ["React.js", "Context API", "State Management"],
     github: "https://github.com/JoudN2001/Todo-List-React",
     demo: "https://todos-tasks-react.netlify.app/",
-    isFlagship: true
+    image: "/projectThumbnail/todos-tasks.png",
+    isFlagship: false
+  },
+  {
+    id: "campus-connect",
+    year: "2026",
+    title: "CampusConnect Event Dashboard",
+    titleAr: "لوحة تحكم منصة CampusConnect",
+    description: "Designed and structured a comprehensive admin dashboard interface for a university event management platform. Architected the frontend data structures to seamlessly integrate with an upcoming PHP/MySQL server-side backend.",
+    descriptionAr: "تصميم لوحة تحكم إدارية متكاملة لمنصة تنظيم الفعاليات الجامعية. تم بناء هياكل واجهة المستخدم لتكون جاهزة للاندماج السلس مع خوادم الواجهة الخلفية (PHP/MySQL).",
+    tech: ["HTML5", "CSS3", "JavaScript", "UI Architecture"],
+    github: "https://github.com/JoudN2001/Campus-Connect",
+    demo: "https://joudn2001.github.io/Campus-Connect/",
+    image: "",
+    isFlagship: false
+  },
+  {
+    id: "youtube-clone",
+    year: "2025",
+    title: "Complex UI Architecture (YouTube Clone)",
+    titleAr: "هيكلية واجهات معقدة (نسخة يوتيوب)",
+    description: "Developed a pixel-perfect, fully responsive web interface clone of YouTube. Demonstrated mastery of complex DOM structuring and pure CSS layout techniques (Flexbox and Grid) without relying on external UI frameworks.",
+    descriptionAr: "بناء نسخة مطابقة تماماً ومتجاوبة لواجهة موقع يوتيوب. يثبت هذا المشروع التمكن التام من هيكلة الـ DOM المعقدة وتقنيات التخطيط المتقدمة (Flexbox/Grid) باستخدام CSS نقي دون مكتبات جاهزة.",
+    tech: ["HTML5", "CSS Grid", "Flexbox", "Responsive Design"],
+    github: "https://github.com/JoudN2001/Build_Youtube_clone",
+    isFlagship: false
+  },
+  {
+    id: "first-contribution",
+    year: "2026",
+    title: "Open Source Contributor",
+    titleAr: "مساهمة مفتوحة المصدر",
+    description: "Actively participated in the open-source community by making an initial contribution to an Arabic developer repository, gaining practical experience with Git version control and collaborative workflows.",
+    descriptionAr: "المشاركة الفعالة في مجتمع المصادر المفتوحة عبر تقديم مساهمة أولية لمستودع مجتمع المطورين العرب، مما عزز من خبرة التعامل مع أنظمة التحكم بالإصدارات (Git) والعمل الجماعي.",
+    tech: ["Git", "GitHub", "Open Source"],
+    github: "https://github.com/Yarob50/First-Contribution-ARABIC",
+    isFlagship: false
+  },
+  {
+    id: "portfolio-html",
+    year: "2025",
+    title: "Legacy Personal Portfolio",
+    titleAr: "المحفظة الشخصية المبدئية",
+    description: "The foundational milestone of my web development journey. A fully responsive personal portfolio built entirely from scratch utilizing semantic HTML and custom CSS.",
+    descriptionAr: "نقطة الانطلاق في مسيرتي البرمجية. موقع محفظة شخصية متجاوب تم بناؤه من الصفر للاعتماد الكامل على مفاهيم HTML الدلالية وتنسيقات CSS المخصصة.",
+    tech: ["HTML", "CSS", "UI Design"],
+    github: "https://github.com/JoudN2001/Build_portfolio_website_using_HTML_CSS",
+    demo: "https://joudn2001.github.io/Build_portfolio_website_using_HTML_CSS/",
+    isFlagship: false
   }
-];
-
-export const archiveRepositories = [
-  { title: "CampusConnect", titleAr: "CampusConnect", url: "https://github.com/JoudN2001/Campus-Connect", demo: "https://joudn2001.github.io/Campus-Connect/" },
-  { title: "Portfolio (HTML/CSS)", titleAr: "Portfolio (HTML/CSS)", url: "https://github.com/JoudN2001/Build_portfolio_website_using_HTML_CSS", demo: "https://joudn2001.github.io/Build_portfolio_website_using_HTML_CSS/" },
-  { title: "YouTube Clone", titleAr: "نسخة يوتيوب", url: "https://github.com/JoudN2001/Build_Youtube_clone" },
-  { title: "Open Source First Contribution", titleAr: "أول مساهمة مفتوحة المصدر", url: "https://github.com/Yarob50/First-Contribution-ARABIC" }
 ];
