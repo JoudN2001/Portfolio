@@ -38,7 +38,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`${fontClass} font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200`}>
+      <body className={`${fontClass} font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

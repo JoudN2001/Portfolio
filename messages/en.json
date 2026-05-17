@@ -23,13 +23,19 @@
       "role": "Frontend Developer Intern",
       "company": "The VentureX",
       "date": "Oct 2024 - Present",
-      "description": "Transitioned to developing dynamic scalable interfaces using React, Next.js, and TypeScript. Built a custom Browser Extension Manager UI from scratch using Vanilla JS (demonstrating pure DOM manipulation mastery). Integrated RESTful APIs, Node.js, and PostgreSQL."
+      "description": "Transitioned to developing dynamic and scalable web interfaces utilizing modern frameworks including React and Next.js.|Built a custom Browser Extension Manager UI from scratch using Vanilla JS (demonstrating pure DOM manipulation mastery).|Engineered type-safe components and scalable codebases using TypeScript, significantly improving code maintainability.|Integrated and managed data flows with backend systems using RESTful APIs, Node.js, and PostgreSQL to ensure seamless user experiences.|Collaborated directly with the development team to translate UI/UX wireframes into functional, cross-browser compatible applications."
     },
     "shalati": {
       "role": "Graphic Designer & IT Support",
       "company": "Shalati Print",
       "date": "Aug 2024 - Oct 2024",
-      "description": "Managed technical troubleshooting for production hardware/software and designed digital/print assets."
+      "description": "Designed digital and print assets using Adobe Creative Suite and managed technical troubleshooting for production hardware/software to minimize downtime."
+    },
+    "youtube": {
+      "role": "Content Creator",
+      "company": "YouTube Channel",
+      "date": "2020 - 2021",
+      "description": "Produced technology-focused content and building PC Hardware & Software, building a community and managing audience engagement."
     }
   },
   "Projects": {
@@ -60,6 +66,10 @@
       "browser": {
         "title": "Browser Extension Manager UI",
         "description": "Built completely from scratch using Vanilla JS and CSS, demonstrating pure DOM manipulation and persistent custom state management for dark/light themes."
+      },
+      "task": {
+        "title": "Task Management Application",
+        "description": "Single Page Application (SPA) with full CRUD operations. Utilized Context API for scalable global state management including filtering and modals, eliminating prop drilling."
       }
     }
   },

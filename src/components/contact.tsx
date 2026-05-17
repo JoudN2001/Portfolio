@@ -76,7 +76,12 @@ export function Contact() {
 
           {/* Contact Form */}
           <div className="md:col-span-3">
-            <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message sent! (Mock form)'); }}>
+            <form className="space-y-6" onSubmit={(e) => { 
+              e.preventDefault(); 
+              const name = (document.getElementById('name') as HTMLInputElement).value;
+              const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+              window.location.href = `mailto:joud.kayale@gmail.com?subject=New Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+            }}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">{t('form.name')}</label>

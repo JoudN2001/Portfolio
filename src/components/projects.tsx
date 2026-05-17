@@ -1,8 +1,9 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useLocale } from "next-intl"
 import { motion } from "framer-motion"
-import { ExternalLink, GitMerge, FileCode, Layers, Cpu, Code2, AppWindow } from "lucide-react"
+import { projects } from "@/constants/data"
+import { ExternalLink, GitMerge, FileCode, Layers, Cpu, Code2, AppWindow, ListTodo, MonitorPlay } from "lucide-react"
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -11,45 +12,23 @@ const GithubIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-export function Projects() {
-  const t = useTranslations('Projects')
-  
-  // Mapping project IDs to their specific icons and URLs from the user's CV
-  const projectData = [
-    {
-      id: "startup",
-      icon: <Layers className="w-6 h-6 text-primary" />,
-      repo: "https://github.com/JoudN2001/Startup-Investment-Platform",
-      lucidFlow: "https://lucid.app/lucidchart/72062dc7-26e1-49d7-8713-306f64dbdccf/edit",
-      lucidSchema: "https://lucid.app/lucidchart/33eff361-3831-4b43-bf38-9b7e1ec494a3/edit"
-    },
-    {
-      id: "algorithm",
-      icon: <GitMerge className="w-6 h-6 text-accent" />,
-      repo: "https://github.com/JoudN2001/Algorithm_Project"
-    },
-    {
-      id: "os",
-      icon: <Cpu className="w-6 h-6 text-primary" />,
-      repo: "https://github.com/JoudN2001/OS-Scheduler-Simulation-Project"
-    },
-    {
-      id: "library",
-      icon: <FileCode className="w-6 h-6 text-accent" />,
-      repo: "https://github.com/JoudN2001/Library_Management_in_Java_GUI"
-    },
-    {
-      id: "weather",
-      icon: <AppWindow className="w-6 h-6 text-primary" />,
-      repo: "https://github.com/JoudN2001/Weather-App"
-    },
-    {
-      id: "browser",
-      icon: <Code2 className="w-6 h-6 text-accent" />,
-      repo: "https://github.com/JoudN2001/Browser-extension-manager-UI"
-    }
-  ]
+const getIcon = (id: string) => {
+  switch (id) {
+    case "startup-platform": return <Layers className="w-6 h-6 text-primary" />
+    case "algorithm-project": return <GitMerge className="w-6 h-6 text-accent" />
+    case "os-scheduler": return <Cpu className="w-6 h-6 text-primary" />
+    case "library-system": return <FileCode className="w-6 h-6 text-accent" />
+    case "weather-app": return <AppWindow className="w-6 h-6 text-primary" />
+    case "extension-manager": return <Code2 className="w-6 h-6 text-accent" />
+    case "task-manager": return <ListTodo className="w-6 h-6 text-primary" />
+    default: return <Code2 className="w-6 h-6 text-primary" />
+  }
+}
 
+export function Projects() {
+  const locale = useLocale()
+  const isAr = locale === 'ar'
+  
   return (
     <section className="py-24 bg-muted/30 border-y border-border/40">
       <div className="container mx-auto px-4 md:px-8">
@@ -61,54 +40,71 @@ export function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-4">
             <span className="text-primary font-mono text-2xl">#</span>
-            {t('title')}
+            {isAr ? "معرض المشاريع الهندسية" : "Engineering Showcase"}
             <div className="flex-1 h-px bg-border ms-4"></div>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectData.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative flex flex-col justify-between p-6 h-full rounded-2xl border border-border bg-background hover:border-primary/50 transition-colors shadow-sm hover:shadow-md"
-              >
-                <div>
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 rounded-lg bg-primary/10 w-fit">
-                      {project.icon}
+            {projects.map((project, index) => {
+              const colSpan = (project.id === "startup-platform" || project.id === "extension-manager") ? "md:col-span-2 lg:col-span-2" : "md:col-span-1 lg:col-span-1"
+              
+              return (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`group relative flex flex-col justify-between p-8 rounded-3xl border border-border bg-background hover:bg-muted/10 transition-colors shadow-sm hover:shadow-xl ${colSpan}`}
+                >
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <div className="p-4 rounded-xl bg-primary/10 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-shadow">
+                        {getIcon(project.id)}
+                      </div>
+                      <div className="flex gap-2 z-10">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noreferrer" title="GitHub Repo" className="p-2 rounded-full bg-muted/50 hover:bg-primary/20 hover:text-primary transition-all text-muted-foreground">
+                            <GithubIcon className="w-5 h-5" />
+                          </a>
+                        )}
+                        {project.demo && (
+                          <a href={project.demo} target="_blank" rel="noreferrer" title="Live Demo" className="p-2 rounded-full bg-muted/50 hover:bg-accent/20 hover:text-accent transition-all text-muted-foreground">
+                            <MonitorPlay className="w-5 h-5" />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex gap-3">
-                      {project.repo && (
-                        <a href={project.repo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                          <GithubIcon className="w-5 h-5" />
-                        </a>
-                      )}
+                    
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors leading-tight">
+                      {isAr ? project.titleAr : project.title}
+                    </h3>
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map(t => (
+                        <span key={t} className="px-3 py-1 bg-muted/50 rounded-full text-xs font-mono text-foreground border border-border/50">
+                          {t}
+                        </span>
+                      ))}
                     </div>
+
+                    <p className="text-muted-foreground text-base leading-relaxed mb-8">
+                      {isAr ? project.descriptionAr : project.description}
+                    </p>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {t(`items.${project.id}.title`)}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                    {t(`items.${project.id}.description`)}
-                  </p>
-                </div>
-                
-                {project.id === "startup" && (
-                  <div className="flex flex-wrap gap-4 mt-auto pt-4 border-t border-border/50">
-                    <a href={project.lucidFlow} target="_blank" rel="noreferrer" className="text-xs font-mono text-primary flex items-center gap-1 hover:underline">
-                      <ExternalLink className="w-3 h-3" /> System Flow
-                    </a>
-                    <a href={project.lucidSchema} target="_blank" rel="noreferrer" className="text-xs font-mono text-accent flex items-center gap-1 hover:underline">
-                      <ExternalLink className="w-3 h-3" /> DB Schema
-                    </a>
-                  </div>
-                )}
-              </motion.div>
-            ))}
+                  {project.extraLinks && project.extraLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-4 mt-auto pt-6 border-t border-border/50">
+                      {project.extraLinks.map((link, i) => (
+                        <a key={i} href={link.url} target="_blank" rel="noreferrer" className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-colors ${i % 2 === 0 ? 'bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground' : 'bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground'}`}>
+                          <ExternalLink className="w-4 h-4" /> {isAr ? link.labelAr : link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              )
+            })}
           </div>
         </motion.div>
       </div>

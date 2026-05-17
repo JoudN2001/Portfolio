@@ -1,12 +1,15 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Download, ArrowRight, Mail } from "lucide-react"
+import { personalInfo } from "@/constants/data"
 
 export function Hero() {
   const t = useTranslations('Hero')
+  const locale = useLocale()
+  const isAr = locale === 'ar'
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
@@ -27,7 +30,7 @@ export function Hero() {
               {t('greeting')}
             </h2>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
-              Joud Kayyali
+              {isAr ? personalInfo.nameAr : personalInfo.name}
             </h1>
             <div className="mt-4">
               <motion.p
@@ -36,7 +39,7 @@ export function Hero() {
                 transition={{ delay: 0.5, duration: 1 }}
                 className="text-lg md:text-xl text-primary font-mono bg-primary/10 inline-block px-3 py-1.5 rounded-md border border-primary/20"
               >
-                {t('roles')}
+                {isAr ? personalInfo.titleAr : personalInfo.title}
               </motion.p>
             </div>
           </div>
